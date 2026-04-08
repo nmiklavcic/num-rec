@@ -5,9 +5,10 @@ import { useRef, useEffect, useState, useCallback } from "react";
 interface CanvasProps {
   onPredict: (imageDataUrl: string) => void;
   isLoading: boolean;
+  submitLabel?: string;
 }
 
-export default function Canvas({ onPredict, isLoading }: CanvasProps) {
+export default function Canvas({ onPredict, isLoading, submitLabel = "Predict" }: CanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isDrawing = useRef(false);
   const [isEmpty, setIsEmpty] = useState(true);
@@ -114,7 +115,7 @@ export default function Canvas({ onPredict, isLoading }: CanvasProps) {
           disabled={isEmpty || isLoading}
           className="px-5 py-2 rounded-lg bg-white text-black text-sm font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed hover:bg-neutral-200"
         >
-          {isLoading ? "Predicting…" : "Predict"}
+          {isLoading ? `${submitLabel}…` : submitLabel}
         </button>
       </div>
     </div>
