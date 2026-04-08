@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: num-rec-frontend
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: num-rec.nmiklavcic.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: num-rec-frontend
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - num-rec.nmiklavcic.com
+      secretName: num-rec-frontend-tls

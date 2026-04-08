@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: num-rec-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: num-rec-frontend
+  template:
+    metadata:
+      labels:
+        app: num-rec-frontend
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: num-rec-frontend
+          image: ghcr.io/nmiklavcic/num-rec-frontend:latest
+          ports:
+            - containerPort: 3000

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: num-rec-frontend
+spec:
+  selector:
+    app: num-rec-frontend
+  ports:
+    - port: 80
+      targetPort: 3000
