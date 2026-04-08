@@ -14,8 +14,15 @@ spec:
     spec:
       imagePullSecrets:
         - name: ghcr-secret
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: num-rec-data
       containers:
         - name: num-rec-backend
           image: ghcr.io/nmiklavcic/num-rec-backend:latest
           ports:
             - containerPort: 8000
+          volumeMounts:
+            - name: data
+              mountPath: /app/data

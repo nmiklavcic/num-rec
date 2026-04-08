@@ -22,7 +22,7 @@ export default function ContributePage() {
     setError(null);
 
     try {
-      const res = await fetch("/api/contribute", {
+      const res = await fetch("https://num-rec-api.nmiklavcic.com/contribute", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ digit: currentDigit, image: imageDataUrl }),
