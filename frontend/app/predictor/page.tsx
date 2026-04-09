@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import Canvas from "@/components/Canvas";
 import Result from "@/components/Result";
+import Link from "next/link";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8000";
 
@@ -55,7 +56,6 @@ export default function Home() {
         <Canvas onPredict={handlePredict} isLoading={isLoading} />
 
         <div className="w-px bg-neutral-800 self-stretch hidden lg:block" />
-
         <div className="flex items-center justify-center min-w-[220px]">
           {result ? (
             <Result
@@ -74,6 +74,14 @@ export default function Home() {
           )}
         </div>
       </div>
+      <div
+        className="itmes-center"
+      >
+        <Link href="/" className="text-neutral-600 hover:text-neutral-400 text-xs transition-colors">
+          ← Back to home
+        </Link>
+      </div>
+
     </main>
   );
 }
