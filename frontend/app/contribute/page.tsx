@@ -101,7 +101,6 @@ export default function ContributePage() {
         key={canvasKey}
         onPredict={handleSubmit}
         isLoading={pageState === "submitting"}
-        submitLabel="Submit"
       />
 
       {error && <p className="text-red-400 text-sm">{error}</p>}
