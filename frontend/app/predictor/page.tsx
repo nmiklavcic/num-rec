@@ -56,9 +56,8 @@ export default function Home() {
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12">
         <Canvas onPredict={handlePredict} isLoading={isLoading} />
 
-        <div className="w-px bg-neutral-800 self-stretch hidden lg:block" />
-
-        <div className="flex items-center justify-center min-w-[220px]">
+        <div className="w-0.5 bg-neutral-800 self-stretch hidden lg:block" />
+        <div className="flex items-center justify-center w-[280px]">
           {result ? (
             <Result
               digit={result.digit}
@@ -76,13 +75,10 @@ export default function Home() {
           )}
         </div>
 
-        <div className="w-px bg-neutral-800 self-stretch hidden lg:block" />
-
         {/* Part where we display what the predictor saw */}
-        <div className="flex items-center justify-center min-w-[220px]">
+        <div className="flex items-center justify-center w-[280px]">
           {result ? (
             <div className="flex flex-col items-center gap-3">
-              <p className="text-neutral-400 text-sm">Model reconstruction</p>
               <img
                 src={result.reconstruction}
                 alt="model reconstruction"
@@ -91,6 +87,7 @@ export default function Home() {
                 style={{ imageRendering: "pixelated" }}
                 className="rounded border border-neutral-700"
               />
+              <p className="text-neutral-400 text-sm">Model reconstruction</p>
             </div>
           ) : (
             <p className="text-neutral-600 text-sm">Reconstruction will appear here</p>
