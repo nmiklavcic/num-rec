@@ -5,7 +5,7 @@ import Canvas from "@/components/Canvas";
 import Result from "@/components/Result";
 import Link from "next/link";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "https://num-rec-api.nmiklavcic.com";
 
 interface PredictionResult {
   digit: number;
