@@ -86,8 +86,8 @@ export default function Home() {
               <img
                 src={result.reconstruction}
                 alt="model reconstruction"
-                width={140}
-                height={140}
+                width={280}
+                height={280}
                 style={{ imageRendering: "pixelated" }}
                 className="rounded border border-neutral-700"
               />
