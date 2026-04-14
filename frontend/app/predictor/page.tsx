@@ -11,6 +11,7 @@ interface PredictionResult {
   digit: number;
   confidence: number;
   probabilities: number[];
+  reconstruction: string;
 }
 
 export default function Home() {
@@ -56,6 +57,7 @@ export default function Home() {
         <Canvas onPredict={handlePredict} isLoading={isLoading} />
 
         <div className="w-px bg-neutral-800 self-stretch hidden lg:block" />
+
         <div className="flex items-center justify-center min-w-[220px]">
           {result ? (
             <Result
@@ -73,6 +75,28 @@ export default function Home() {
             </p>
           )}
         </div>
+
+        <div className="w-px bg-neutral-800 self-stretch hidden lg:block" />
+
+        {/* Part where we display what the predictor saw */}
+        <div className="flex items-center justify-center min-w-[220px]">
+          {result ? (
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-neutral-400 text-sm">Model reconstruction</p>
+              <img
+                src={result.reconstruction}
+                alt="model reconstruction"
+                width={140}
+                height={140}
+                style={{ imageRendering: "pixelated" }}
+                className="rounded border border-neutral-700"
+              />
+            </div>
+          ) : (
+            <p className="text-neutral-600 text-sm">Reconstruction will appear here</p>
+          )}
+        </div>
+
       </div>
       <div
         className="itmes-center"

@@ -57,11 +57,13 @@ function predictHandler(req)
         flat = flatten_input_image(tmp)
         rm(tmp)
 
-        digit, confidence, probabilities = calculate_best_fit(flat)
+        digit, confidence, probabilities, xi = calculate_best_fit(flat)
+        reconstruction = x_to_img(xi, digit)
         return HTTP.Response(200, returnCors(), JSON3.write(Dict(
             "digit" => digit,
             "confidence" => confidence,
-            "probabilities" => collect(probabilities)
+            "probabilities" => collect(probabilities),
+            "reconstruction" => reconstruction
         )))
     catch e
         return HTTP.Response(500, returnCors(), JSON3.write(Dict("status" => "error", "message" => string(e))))
